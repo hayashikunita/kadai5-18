@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+  <!-- Form
+  ================================================== -->
+<div class="form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead">
+          {% if lastname and firstname: %}
+              答えは {{ lastname }}  {{ firstname }} です
+          {% else: %}
+            {{ message }}
+          {% endif %}
+        </p>
+        <form action="/post" method="post" class="form-inline">
+          <label for="lastname">苗字
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="lastname">
+          </label>
+          <label for="firstname">名前
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="firstname">
+          </label>
+          <button type="submit" class="btn btn-default">送信する</button>
+        </form>
+        注意：全角文字、15文字以下で入力をして下さい
+
+        {% if error %}
+          <p class=error><strong>Error:</strong> {{ error }}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
